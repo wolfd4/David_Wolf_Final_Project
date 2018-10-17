@@ -1,4 +1,5 @@
 const express = require('express');
+const fitnessApp = require('./fitnessApp/controller');
 const app = express();
 const port = 3000;
 const server = "localhost";
@@ -6,7 +7,7 @@ const server = "localhost";
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use("/", express.static(__dirname + "/../client/"));
-
+app.use('/fitnessapp', fitnessApp);
 app.listen(port);
 
 console.log(`listening on: http://${server}:${port}`);
