@@ -1,0 +1,19 @@
+{
+  "name": "david_wolf_final_project",
+  "version": "1.0.0",
+  "description": "Final Project for Web Development Class",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
