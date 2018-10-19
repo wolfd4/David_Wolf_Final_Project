@@ -14,6 +14,7 @@ class User{
         this.activity = activity;
         this.workoutsDone = [];
         this.friendsList = [];
+        this.goals = [];
         this.calorieInTake = 0;
         this.changeInTake = function(inTake){
             this.calorieInTake = inTake;
@@ -34,6 +35,13 @@ class User{
             return "You are obese"
         }
      }
+      
+     get BMR(){
+        return (66 + (6.2 * this.weight) + (12.7 * this.height) - (6.76 * this.age))
+    };
+     get TDEE(){
+         return (this.BMR * this.activity)
+     };
 };
 
 module.exports = {

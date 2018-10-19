@@ -38,13 +38,19 @@ app.post('/addFriend/:name', (req, res) => {
     res.send(CurrentUser)
 });
 
-//dispays users aggergated data
-
 //Adds a workout to workout completed
 app.post('/addWorkout', (req, res) => {
     var workout = req.body.workout;
     const CurrentUser = fitapp.users.find(n => n.id === 1);
     CurrentUser.workoutsDone.push(workout);
+    res.send(CurrentUser);
+});
+
+//Adds a goal to users goals list 
+app.post('/addGoal', (req, res) => {
+    var goal = req.body.goal;
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    CurrentUser.goals.push(goal);
     res.send(CurrentUser);
 });
 
@@ -59,8 +65,48 @@ app.post('/setIntake', (req, res) => {
 app.post('/getBMI', (req, res) => {
     const CurrentUser = fitapp.users.find(n => n.id === 1);
     var BMI = CurrentUser.BMI;
-    res.send(`${BMI}`)
+    res.send(`Based on your Body Mass Index ${BMI}`)
 });
 
+//gets BMR
+app.post('/getBMR', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    var BMR = CurrentUser.BMR;
+    res.send(`Based on your basal metabolic rate, you use ${BMR} calories`)
+});
+
+//gets TDEE
+app.post('/getTDEE', (req, res) => {
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    var TDEE = CurrentUser.TDEE;
+    res.send(`Based on your Total Daily Energy Expenditure, you use ${TDEE} calories`)
+});
+
+// views friends information
+app.post('/viewFriend/:name', (req, res) => {
+    const friend = fitapp.users.find(n => n.name === String(req.params.name));
+    if(!friend){
+        res.status(404).send('Friend not found');
+    };
+    const CurrentUser = fitapp.users.find(n => n.id === 1);
+    if(friend.id === CurrentUser.id){
+        res.status(404).send('Cannot find yourself as a friend')
+    };
+    const isFriend = friend.friendsList.find(n =>n.id ===CurrentUser.id)
+    if(!isFriend){
+        res.status(404).send('You are not this users Friend. You cannot look at their inforamtion')
+    }
+    else{
+    res.send(friend);
+    }
+});
+
+//sets a users friend
+app.post('/addFriendtoUser/:name', (req, res) => {
+    const user = fitapp.users.find(n => n.name === String(req.params.name));
+    const addedFriend = fitapp.users.find(n => n.name === req.body.name);
+    user.friendsList.push(addedFriend);
+    res.send(user)
+});
 //display users information
 module.exports = app;
