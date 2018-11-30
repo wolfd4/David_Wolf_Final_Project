@@ -1,13 +1,26 @@
-David_Wolf_Final_Project
+# david_wolf_final_project
 
-List of features
+## Project setup
+```
+npm install
+```
 
-Screen 1: Login screen so that several users can use the program at once. Ask user for username and password to login to personal account.
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-Screen 2: Personal information fill in sheet. Allows the user to fill in  personal information like age, sex, current body weight, etc. will also allow for daily update on amount of calories taken in and amount of exercise done.
+### Compiles and minifies for production
+```
+npm run build
+```
 
-Screen 3: Health equations and information. Contains information based on current health features such Body Mass Index, proper daily calorie intake and amount burned naturally per day, ect. 
+### Run your tests
+```
+npm run test
+```
 
-Screen 4: Calendars and Graphs for health information. Contains a calendar to plan exercising schedule and a graph that visually shows the user how health information is balancing, such as if they are staying within proper calorie intake or proper BMI.
-
-Each screen will be a different tab at the top of the screen.
+### Lints and fixes files
+```
+npm run lint
+```
